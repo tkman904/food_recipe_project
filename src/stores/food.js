@@ -156,7 +156,7 @@ export default {
             await axios.get('http://localhost/main_vue/', {
                 params: {page}
             }).then(response=> {
-                console.log(response.data)
+                console.log(response)
                 commit('SET_FOOD_DATA', response.data)
                 // this.food_data = response.data
                 // commit => mutation에 있는 함수 호출
@@ -167,7 +167,7 @@ export default {
             await axios.get("http://localhost/food/detail_vue/", {
                 params: {fno}
             }).then(response=> {
-                console.log(response.data)
+                console.log(response)
                 commit('SET_FOOD_DETAIL', response.data)
             })
         },
