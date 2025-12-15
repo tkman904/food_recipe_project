@@ -7,7 +7,8 @@ export default {
     // 저장하는 데이터 설정
     state: {
         board_list: {},
-        board_detail: {}
+        board_detail: {},
+        msg: "no"
     },
     // 서버에서 들어오는 데이터를 state에 저장하는 역할
     // mutation을 이용해서 state로 전송이 되면 => <template>에 있는 HTML에 바로 반영</template>
@@ -49,7 +50,27 @@ export default {
             })
             console.log(data)
             commit('SET_BOARD_DETAIL', data)
-        }
+        },
         // 글쓰기
+        async boardInsert({dispatch}, board) {
+            await axios.post("http://localhost/board/insert_vue/", board)
+            dispatch("boardListData", 1)
+        },
+        // 수정하기
+        async boardUpdate({dispatch}, board) {
+            await axios.post("http://localhost/board/update_vue/", board)
+            dispatch("boardDetailData", board.no)
+        }
     }
+    /*
+        데이터 갱신 => commit : forward
+        데이터 갱신이 없는 경우 => dispatch : sendRedirect
+        
+        commit : 데이터 읽기
+                1. 목록 2. 상세보기 3. 수정 데이터
+                => forward
+        dispatch : 데이터 처리
+                1. 글쓰기 2. 수정 3. 삭제
+                => redirect
+     */
 }

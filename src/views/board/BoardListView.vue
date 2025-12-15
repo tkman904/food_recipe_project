@@ -6,7 +6,7 @@
                 <tbody>
                     <tr>
                         <td class="text-left">
-                            <a href="/board/insert" class="btn btn-xs btn-warning">새 글</a>
+                            <router-link to="/board/insert" class="btn btn-xs btn-warning">새 글</router-link>
                         </td>
                     </tr>
                 </tbody>

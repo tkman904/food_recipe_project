@@ -28,8 +28,8 @@
                     </tr>
                     <tr>
                         <td colspan="4" class="text-right">
-                            <a href="#" class="btn btn-xs btn-info">수정</a>
-                            <a href="#" class="btn btn-xs btn-warning">삭제</a>
+                            <button class="btn btn-xs btn-info" @click="goUpdate()">수정</button>
+                            <button class="btn btn-xs btn-warning" @click="goDelete()">삭제</button>
                             <button type="button" class="btn btn-xs btn-success" @click="goList()">목록</button>
                         </td>
                     </tr>
@@ -53,6 +53,10 @@
     
     const goList = () => {
         router.push("/board/list")
+    }
+    // PathValiable
+    const goUpdate = () => {
+        router.push(`/board/update/${route.params.no}`)
     }
     /*
         {
